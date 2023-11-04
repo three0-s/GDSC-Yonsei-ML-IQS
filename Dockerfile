@@ -4,10 +4,7 @@ RUN pip install --upgrade pip
 WORKDIR /gdsc-yonsei
 RUN pip3 install -r requirements.txt
 
+CMD [ "/bin/bash", "docker-entry.sh"]
 
-CMD ["python3", "manage.py", "db", "init", \
-     "python3", "manage.py", "db", "migrate", "--message", "init", \
-     "python3", "manage.py", "db", "upgrade", \
-     "python3", "manage.py", "run"]
 
 
