@@ -1,7 +1,11 @@
-FROM python:3.9-slim
-COPY . /app
-RUN pip3 install flask
-WORKDIR /app 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0", "--port=8888"]
+FROM python:3.6-slim
+COPY . /gdsc-yonsei
+RUN pip3 install -r requirements.txt
+WORKDIR /gdsc-yonsei
+
+CMD ["python3", "manage.py", "db", "init", \
+     "python3", "manage.py", "db", "migrate", "--message", "init", \
+     "python3", "manage.py", "db", "upgrade", \
+     "python3", "manage.py", "run"]
 
 

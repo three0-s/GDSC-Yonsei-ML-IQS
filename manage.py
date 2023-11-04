@@ -3,11 +3,9 @@ import unittest
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from app.main.model import blacklist
-
 
 from app.main import create_app, db
-from app.main.model import user
+
 from app import blueprint
 
 
@@ -20,7 +18,7 @@ manager.add_command('db', MigrateCommand)
 
 @manager.command
 def run():
-    app.run()
+    app.run(host='0.0.0.0', port=8888)
 
 @manager.command
 def test():
