@@ -1,8 +1,0 @@
-[Unit]
-Description=gdsc-ml apiserver gunicorn socket
-
-[Socket]
-ListenStream=/gdsc-ml.sock
-
-[Install]
-WantedBy=sockets.target
