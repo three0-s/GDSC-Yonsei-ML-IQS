@@ -13,7 +13,7 @@ _user = UserDto.user
 class UserList(Resource):
     @api.doc('list_of_registered_users')
     @api.marshal_list_with(_user, envelope='data')
-    @admin_token_required
+    # @admin_token_required
     def get(self):
         """List all registered users"""
         return get_all_users()
@@ -34,7 +34,7 @@ class UserCV(Resource):
     @api.doc('get cv of a user')
     @api.marshal_with(_user)
     @api.response(201, 'CV successfully retrieved.')
-    @admin_token_required
+    # @admin_token_required
     def get(self, public_id):
         """get cv of a user"""
         return get_cv(public_id)
@@ -42,7 +42,7 @@ class UserCV(Resource):
     @api.response(201, 'CV successfully added.')
     @api.doc('Set CV for a user')
     @api.expect(_user, validate=True)
-    @token_required
+    # @token_required
     def post(self):
         """set cv for a user """
         data = request.json
@@ -55,7 +55,7 @@ class UserCV(Resource):
 class User(Resource):
     @api.doc('get a user')
     @api.marshal_with(_user)
-    @admin_token_required
+    # @admin_token_required
     def get(self, public_id):
         """get a user given its identifier"""
         user = get_a_user(public_id)
